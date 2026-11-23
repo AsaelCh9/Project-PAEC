@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de Compostaje</title>
+    <style>
+        :root {
+            --verde-oscuro: #2d5a27;
+            --verde-claro: #e8f5e9;
+            --tierra: #6d4c41;
+            --fondo: #f9fbf9;
+            --texto: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--texto);
+            background-color: var(--fondo);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--verde-oscuro);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 10px auto 0; }
+       
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 2rem;
+        }
+        h2 { color: var(--verde-oscuro); border-bottom: 2px solid var(--verde-claro); padding-bottom: 0.5rem; }
+       
+        .grid-materiales {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            padding: 1.2rem;
+            border-radius: 6px;
+        }
+        .verdes { background-color: #e8f5e9; border-left: 5px solid #4caf50; }
+        .marrones { background-color: #efebe9; border-left: 5px solid var(--tierra); }
+        .prohibidos { background-color: #ffebee; border-left: 5px solid #e53935; }
+       
+        .pasos ol { padding-left: 1.2rem; }
+        .pasos li { margin-bottom: 1rem; }
+       
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌱 El Arte del Compostaje</h1>
+    <p>Transforma tus residuos orgánicos en tierra fértil y reduce tu huella ecológica desde casa.</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>¿Qué es la composta?</h2>
+        <p>
+            La <strong>composta</strong> (o compost) es un abono orgánico natural que se obtiene mediante la descomposición controlada de materia orgánica —como restos de comida y desechos de jardín— gracias a la acción de microorganismos (bacterias, hongos) y pequeños invertebrados.
+        </p>
+        <p>
+            El resultado es el <strong>humus</strong>: una tierra oscura, esponjosa y rica en nutrientes con un agradable olor a bosque húmedo, ideal para nutrir plantas, huertos y jardines.
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Qué poner y qué evitar? (La regla del equilibrio)</h2>
+        <p>Para que la composta no genere malos olores, debes equilibrar materiales húmedos ricos en <strong>Nitrógeno (Verdes)</strong> con materiales secos ricos en <strong>Carbono (Marrones)</strong>.</p>
+       
+        <div class="grid-materiales">
+            <div class="card verdes">
+                <h3>🌿 Verdes (Nitrógeno)</h3>
+                <ul>
+                    {% for item in materiales_verdes %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card marrones">
+                <h3>🍂 Marrones (Carbono)</h3>
+                <ul>
+                    {% for item in materiales_marrones %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card prohibidos">
+                <h3>🚫 Evitar</h3>
+                <ul>
+                    {% for item in no_compostar %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="pasos">
+        <h2>Cómo empezar en 4 pasos</h2>
+        <ol>
+            <li><strong>Elige un lugar o contenedor:</strong> Puede ser un rincón directo sobre la tierra o un compostador con ventilación y drenaje.</li>
+            <li><strong>Crea una base seca:</strong> Coloca una capa inicial de ramas pequeñas y hojas secas (unos 10 cm) para facilitar la aireación.</li>
+            <li><strong>Alterna capas ("Lasaña"):</strong> Añade una parte de residuos verdes (húmedos) por cada dos partes de materiales marrones (secos).</li>
+            <li><strong>Aireación y humedad:</strong> Remueve la mezcla cada 1 o 2 semanas para oxigenarla. Debe sentirse como una esponja húmeda, nunca empapada.</li>
+        </ol>
+        <p><em>Tiempo estimado: En un periodo de <strong>2 a 4 meses</strong> tendrás composta lista para usar.</em></p>
+    </section>
+</div>
+
+<footer>
+    Proyecto Informativo sobre Compostaje • Desarrollado con Django
+</footer>
+
+</body>
+</html>
