@@ -5,6 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Completa de Compostaje</title>
     <style>
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 0.4rem; }
+        .form-input {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        button {
+            background-color: var(--verde-oscuro);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        button:hover { background-color: #1e3f1a; }
+        .resultado-box {
+            background-color: var(--verde-claro);
+            border: 1px solid #81c784;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1.2rem;
+        }
+        .alerta-exito {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        .consulta-item {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+        .consulta-item:last-child { border-bottom: none; }
+        .respuesta-admin {
+            background-color: #f1f8e9;
+            padding: 0.8rem;
+            border-left: 4px solid var(--verde-oscuro);
+            margin-top: 0.5rem;
+            border-radius: 0 5px 5px 0;
+        }
         :root {
             --verde-oscuro: #2d5a27;
             --verde-claro: #e8f5e9;
@@ -77,6 +124,72 @@
 </header>
 
 <div class="container">
+    <section id="calculadora">
+        <h2>🧮 Calculadora de Proporciones</h2>
+        <p>Ingresa cuántos kilos o litros de residuos húmedos (verdes) vas a añadir hoy para calcular la mezcla exacta:</p>
+       
+        <form method="POST" action="#calculadora">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ calc_form.cantidad_verdes.label_tag }}
+                {{ calc_form.cantidad_verdes }}
+            </div>
+            <button type="submit" name="btn_calcular">Calcular mezcla ideal</button>
+        </form>
+
+        {% if resultado_calculadora %}
+        <div class="resultado-box">
+            <h3>Resultado para {{ resultado_calculadora.verdes }} kg/L de verdes:</h3>
+            <ul>
+                <li>🍂 Añade <strong>{{ resultado_calculadora.marrones }} kg/L de material marrón</strong> (hojas secas, cartón o aserrín).</li>
+                <li>💧 Si la mezcla se siente muy seca al tacto, rocía aproximadamente <strong>{{ resultado_calculadora.agua_estimada }} litros de agua</strong>.</li>
+            </ul>
+        </div>
+        {% endif %}
+    </section>
+
+    <section id="comunidad">
+        <h2>💬 Preguntas y Comunidad</h2>
+       
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alerta-exito">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="#comunidad">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ consulta_form.nombre.label_tag }}
+                {{ consulta_form.nombre }}
+            </div>
+            <div class="form-group">
+                {{ consulta_form.pregunta.label_tag }}
+                {{ consulta_form.pregunta }}
+            </div>
+            <button type="submit" name="btn_preguntar">Enviar pregunta</button>
+        </form>
+
+        <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #eee;">
+
+        <h3>Dudas recientes</h3>
+        {% for item in consultas %}
+            <div class="consulta-item">
+                <strong>{{ item.nombre }}</strong> <small style="color:#888;">({{ item.fecha_creacion|date:"d M Y" }})</small>
+                <p style="margin: 0.4rem 0;">{{ item.pregunta }}</p>
+               
+                {% if item.respuesta %}
+                    <div class="respuesta-admin">
+                        <strong>🌱 Respuesta:</strong> {{ item.respuesta }}
+                    </div>
+                {% else %}
+                    <small style="color: #999;"><em>Pendiente de respuesta...</em></small>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>Aún no hay preguntas. ¡Sé el primero en consultar!</p>
+        {% endfor %}
+    </section>
     <section>
         <h2>¿Qué es la composta?</h2>
         <p>
