@@ -1,9 +1,10 @@
+<img src="https://www.google.com/imgres?q=cetis%2058%20logo&imgurl=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F97ba19_285e0e29ec8d42f7aaae095422474f44.jpg%2Fv1%2Ffill%2Fw_221%2Ch_240%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto%2F97ba19_285e0e29ec8d42f7aaae095422474f44.jpg&imgrefurl=https%3A%2F%2Fcetis058vinculacion.wixsite.com%2Fcetisno58&docid=cC6t13LCpcQL_M&tbnid=Ij7_vPqWMY0XmM&vet=12ahUKEwi0xP3yzqGYAxWeHDQIHcoADFAQnPAOegQIORAA..i&w=221&h=240&hcb=2&ved=2ahUKEwi0xP3yzqGYAxWeHDQIHcoADFAQnPAOegQIORAA" alt="Logo CETIS 58" style="height: 100%; width: 100%; object-fit: contain;">
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoComposta • Guía Viva de Compostaje</title>
+    <title>EcoComposta • CETIS 58 Tijuana (Equipo 7)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
@@ -25,9 +26,7 @@
             --sombra: 0 10px 25px -5px rgba(27, 67, 50, 0.08), 0 8px 10px -6px rgba(27, 67, 50, 0.04);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -48,10 +47,10 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(45, 106, 79, 0.1);
-            padding: 0.8rem 1.5rem;
+            border-bottom: 1px solid rgba(45, 106, 79, 0.12);
+            padding: 0.6rem 1.5rem;
         }
         .nav-content {
             max-width: 960px;
@@ -62,15 +61,32 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--verde-bosque);
-            text-decoration: none;
+        .brand-box {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .logo-dgeti-nav {
+            height: 48px;
+            width: 48px;
+            flex-shrink: 0;
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--verde-bosque);
+            line-height: 1.1;
+        }
+        .brand-sub {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--texto-suave);
         }
         .nav-links a {
             text-decoration: none;
@@ -80,16 +96,14 @@
             margin-left: 1.2rem;
             transition: color 0.2s;
         }
-        .nav-links a:hover {
-            color: var(--verde-medio);
-        }
+        .nav-links a:hover { color: var(--verde-medio); }
 
         /* Hero Header */
         header {
             background: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-medio) 100%);
             color: white;
             text-align: center;
-            padding: 4.5rem 1.5rem 5.5rem;
+            padding: 3.5rem 1.5rem 5.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -103,26 +117,62 @@
             background: var(--fondo);
             border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         }
-        .badge-hero {
+        .escuela-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.1rem;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 1.6rem;
+            backdrop-filter: blur(6px);
+            text-align: left;
+        }
+        .logo-dgeti-circle {
+            height: 76px;
+            width: 76px;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .escuela-info strong {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+        .escuela-info span {
+            font-size: 0.88rem;
+            opacity: 0.92;
+            display: block;
+            margin-top: 2px;
+        }
+        .equipo-pill {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.35rem 1rem;
+            background: #ffffff;
+            color: #9e1b1e;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 2px 10px;
             border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(4px);
+            margin-top: 6px;
         }
         header h1 {
             margin: 0;
-            font-size: clamp(2.2rem, 5vw, 3.3rem);
+            font-size: clamp(2.1rem, 5vw, 3.2rem);
             line-height: 1.15;
         }
         header p {
             font-size: 1.15rem;
             opacity: 0.92;
             max-width: 620px;
-            margin: 1.2rem auto 2rem;
+            margin: 1.1rem auto 2rem;
         }
         .btn-hero {
             display: inline-block;
@@ -267,9 +317,7 @@
             font-weight: bold;
             color: var(--verde-medio);
         }
-        details[open] summary::after {
-            content: "−";
-        }
+        details[open] summary::after { content: "−"; }
         details p {
             margin: 0.8rem 0 0;
             color: var(--texto-suave);
@@ -311,7 +359,7 @@
             box-shadow: 0 6px 15px rgba(27, 67, 50, 0.25);
         }
 
-        /* Barra visual interactiva en calculadora */
+        /* Barra visual interactiva */
         .barra-composta {
             display: flex;
             height: 24px;
@@ -320,16 +368,8 @@
             margin: 1rem 0;
             background: #e5e7eb;
         }
-        .barra-verdes {
-            background: var(--verde-hoja);
-            width: 28%;
-            transition: width 0.3s;
-        }
-        .barra-marrones {
-            background: var(--tierra);
-            width: 72%;
-            transition: width 0.3s;
-        }
+        .barra-verdes { background: var(--verde-hoja); width: 28%; }
+        .barra-marrones { background: var(--tierra); width: 72%; }
 
         .resultado-box {
             background: linear-gradient(to right, #ecfdf5, #f0fdf4);
@@ -388,12 +428,32 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
+        /* Footer Institucional */
         footer {
             text-align: center;
             padding: 2.5rem 1rem;
             background-color: var(--verde-bosque);
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+        }
+        .footer-logo-wrap {
+            width: 72px;
+            height: 72px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin: 0 auto 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        .equipo-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -401,7 +461,33 @@
 
 <nav>
     <div class="nav-content">
-        <a href="#" class="logo">🌱 EcoComposta</a>
+        <a href="#" class="brand-box">
+            <!-- Logo DGETI / CETIS 58 -->
+            <svg class="logo-dgeti-nav" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#9e1b1e">
+                    <!-- Engrane izquierdo DGETI -->
+                    <path d="M58 18 V28 A32 32 0 0 0 58 92 V102 A42 42 0 0 1 58 18 Z"/>
+                    <rect x="46" y="13" width="10" height="8" rx="1"/>
+                    <rect x="30" y="21" width="10" height="8" rx="1" transform="rotate(-30 35 25)"/>
+                    <rect x="19" y="36" width="10" height="8" rx="1" transform="rotate(-60 24 40)"/>
+                    <rect x="15" y="56" width="10" height="8" rx="1"/>
+                    <rect x="19" y="76" width="10" height="8" rx="1" transform="rotate(60 24 80)"/>
+                    <rect x="30" y="91" width="10" height="8" rx="1" transform="rotate(30 35 95)"/>
+                    <rect x="46" y="99" width="10" height="8" rx="1"/>
+                    <!-- Flecha superior derecha -->
+                    <path d="M56 18 H84 V10 L104 23 L84 36 V28 H56 Z"/>
+                    <!-- Aro interior -->
+                    <circle cx="62" cy="60" r="24" fill="none" stroke="#9e1b1e" stroke-width="4.5"/>
+                    <!-- Siglas DGETI -->
+                    <text x="62" y="57" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">DG</text>
+                    <text x="62" y="75" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">ETI</text>
+                </g>
+            </svg>
+            <div class="brand-text">
+                <span class="brand-title">🌱 EcoComposta</span>
+                <span class="brand-sub">CETIS 58 Tijuana • Equipo 7</span>
+            </div>
+        </a>
         <div class="nav-links">
             <a href="#que-es">¿Qué es?</a>
             <a href="#materiales">Ingredientes</a>
@@ -413,7 +499,32 @@
 </nav>
 
 <header>
-    <span class="badge-hero">♻️ Economía Circular en Casa</span>
+    <div class="escuela-banner">
+        <div class="logo-dgeti-circle">
+            <svg width="64" height="64" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#9e1b1e">
+                    <path d="M58 18 V28 A32 32 0 0 0 58 92 V102 A42 42 0 0 1 58 18 Z"/>
+                    <rect x="46" y="13" width="10" height="8" rx="1"/>
+                    <rect x="30" y="21" width="10" height="8" rx="1" transform="rotate(-30 35 25)"/>
+                    <rect x="19" y="36" width="10" height="8" rx="1" transform="rotate(-60 24 40)"/>
+                    <rect x="15" y="56" width="10" height="8" rx="1"/>
+                    <rect x="19" y="76" width="10" height="8" rx="1" transform="rotate(60 24 80)"/>
+                    <rect x="30" y="91" width="10" height="8" rx="1" transform="rotate(30 35 95)"/>
+                    <rect x="46" y="99" width="10" height="8" rx="1"/>
+                    <path d="M56 18 H84 V10 L104 23 L84 36 V28 H56 Z"/>
+                    <circle cx="62" cy="60" r="24" fill="none" stroke="#9e1b1e" stroke-width="4.5"/>
+                    <text x="62" y="57" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">DG</text>
+                    <text x="62" y="75" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">ETI</text>
+                </g>
+            </svg>
+        </div>
+        <div class="escuela-info">
+            <strong>Centro de Estudios Tecnológicos Industrial y de Servicios No. 58</strong>
+            <span>DGETI • Tijuana, Baja California</span>
+            <span class="equipo-pill">Elaborado por el Equipo 7</span>
+        </div>
+    </div>
+
     <h1>Convierte tus residuos en vida</h1>
     <p>Aprende a crear abono orgánico rico en nutrientes, reduce hasta un 50% tu basura doméstica y revitaliza tus plantas de forma natural.</p>
     <a href="#calculadora" class="btn-hero">Probar Calculadora de Mezcla</a>
@@ -594,10 +705,10 @@
                 
                 {% if item.respuesta %}
                     <div class="respuesta-admin">
-                        <strong>🌱 Respuesta del experto:</strong> {{ item.respuesta }}
+                        <strong>🌱 Respuesta del Equipo 7:</strong> {{ item.respuesta }}
                     </div>
                 {% else %}
-                    <small style="color: #9ca3af;"><em>⏳ Esperando respuesta del equipo...</em></small>
+                    <small style="color: #9ca3af;"><em>⏳ Esperando respuesta del Equipo 7...</em></small>
                 {% endif %}
             </div>
         {% empty %}
@@ -608,11 +719,29 @@
 </div>
 
 <footer>
-    <p><strong>🌱 EcoComposta</strong> • Proyecto Educativo sobre Compostaje Doméstico</p>
-    <p style="font-size: 0.8rem; opacity: 0.7;">Desarrollado con Python & Django</p>
+    <div class="footer-logo-wrap">
+        <svg width="60" height="60" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#9e1b1e">
+                <path d="M58 18 V28 A32 32 0 0 0 58 92 V102 A42 42 0 0 1 58 18 Z"/>
+                <rect x="46" y="13" width="10" height="8" rx="1"/>
+                <rect x="30" y="21" width="10" height="8" rx="1" transform="rotate(-30 35 25)"/>
+                <rect x="19" y="36" width="10" height="8" rx="1" transform="rotate(-60 24 40)"/>
+                <rect x="15" y="56" width="10" height="8" rx="1"/>
+                <rect x="19" y="76" width="10" height="8" rx="1" transform="rotate(60 24 80)"/>
+                <rect x="30" y="91" width="10" height="8" rx="1" transform="rotate(30 35 95)"/>
+                <rect x="46" y="99" width="10" height="8" rx="1"/>
+                <path d="M56 18 H84 V10 L104 23 L84 36 V28 H56 Z"/>
+                <circle cx="62" cy="60" r="24" fill="none" stroke="#9e1b1e" stroke-width="4.5"/>
+                <text x="62" y="57" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">DG</text>
+                <text x="62" y="75" font-family="Impact, Outfit, sans-serif" font-size="19" text-anchor="middle" letter-spacing="0.5">ETI</text>
+            </g>
+        </svg>
+    </div>
+    <p style="margin: 0.3rem 0; font-size: 1.05rem;"><strong>Centro de Estudios Tecnológicos Industrial y de Servicios No. 58 (CETIS 58)</strong></p>
+    <p style="margin: 0.2rem 0; opacity: 0.85;">Dirección General de Educación Tecnológica Industrial y de Servicios • Tijuana, B.C.</p>
+    <div class="equipo-badge">👥 Elaborado por el Equipo 7</div>
 </footer>
 
-<!-- Script ligero para vista previa en tiempo real en la calculadora -->
 <script>
     const inputVerdes = document.getElementById('id_cantidad_verdes');
     const previewVerdes = document.getElementById('preview-verdes');
