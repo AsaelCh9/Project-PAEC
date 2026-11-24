@@ -3,157 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Completa de Compostaje</title>
+    <title>EcoComposta • Guía Viva de Compostaje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 0.4rem; }
-        .form-input {
-            width: 100%;
-            padding: 0.7rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        button {
-            background-color: var(--verde-oscuro);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-        button:hover { background-color: #1e3f1a; }
-        .resultado-box {
-            background-color: var(--verde-claro);
-            border: 1px solid #81c784;
-            padding: 1.2rem;
-            border-radius: 6px;
-            margin-top: 1.2rem;
-        }
-        .alerta-exito {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1.5rem;
-        }
-        .consulta-item {
-            border-bottom: 1px solid #eee;
-            padding: 1rem 0;
-        }
-        .consulta-item:last-child { border-bottom: none; }
-        .respuesta-admin {
-            background-color: #f1f8e9;
-            padding: 0.8rem;
-            border-left: 4px solid var(--verde-oscuro);
-            margin-top: 0.5rem;
-            border-radius: 0 5px 5px 0;
-        }
         :root {
-            --verde-oscuro: #2d5a27;
-            --verde-claro: #e8f5e9;
-            --tierra: #6d4c41;
-            --fondo: #f9fbf9;
-            --texto: #333333;
+            --verde-bosque: #1b4332;
+            --verde-medio: #2d6a4f;
+            --verde-hoja: #52b788;
+            --verde-menta: #d8f3dc;
+            --tierra: #7f5539;
+            --tierra-suave: #f3eae2;
+            --alerta-bg: #fff1f2;
+            --alerta-borde: #e11d48;
+            --fondo: #f6f8f6;
+            --blanco: #ffffff;
+            --texto: #1f2937;
+            --texto-suave: #4b5563;
+            --sombra: 0 10px 25px -5px rgba(27, 67, 50, 0.08), 0 8px 10px -6px rgba(27, 67, 50, 0.04);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.65;
             color: var(--texto);
             background-color: var(--fondo);
             margin: 0;
             padding: 0;
         }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navegación flotante */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+            padding: 0.8rem 1.5rem;
+        }
+        .nav-content {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--verde-bosque);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-suave);
+            font-weight: 500;
+            font-size: 0.92rem;
+            margin-left: 1.2rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--verde-medio);
+        }
+
+        /* Hero Header */
         header {
-            background-color: var(--verde-oscuro);
+            background: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-medio) 100%);
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4.5rem 1.5rem 5.5rem;
+            position: relative;
+            overflow: hidden;
         }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 10px auto 0; }
-       
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--fondo);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        .badge-hero {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        header h1 {
+            margin: 0;
+            font-size: clamp(2.2rem, 5vw, 3.3rem);
+            line-height: 1.15;
+        }
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 620px;
+            margin: 1.2rem auto 2rem;
+        }
+        .btn-hero {
+            display: inline-block;
+            background: var(--verde-menta);
+            color: var(--verde-bosque);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Contenedor y Tarjetas */
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 960px;
+            margin: -1.5rem auto 3rem;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
         section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            margin-bottom: 2rem;
+            background: var(--blanco);
+            padding: 2.2rem;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(0,0,0,0.03);
         }
-        h2 { color: var(--verde-oscuro); border-bottom: 2px solid var(--verde-claro); padding-bottom: 0.5rem; }
-       
+        h2 {
+            color: var(--verde-bosque);
+            font-size: 1.7rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Datos rápidos (Stats) */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .stat-box {
+            background: var(--fondo);
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        .stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--verde-medio);
+            display: block;
+        }
+
+        /* Grid Materiales */
         .grid-materiales {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
         .card {
-            padding: 1.2rem;
-            border-radius: 6px;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .verdes { background-color: #e8f5e9; border-left: 5px solid #4caf50; }
-        .marrones { background-color: #efebe9; border-left: 5px solid var(--tierra); }
-        .prohibidos { background-color: #ffebee; border-left: 5px solid #e53935; }
-       
-        .pasos ol { padding-left: 1.2rem; }
-        .pasos li { margin-bottom: 1rem; }
-       
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.07);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; }
+        .card ul { padding-left: 1.2rem; margin-bottom: 0; }
+        .card li { margin-bottom: 0.5rem; }
+        
+        .verdes { background-color: var(--verde-menta); border-top: 5px solid var(--verde-hoja); }
+        .marrones { background-color: var(--tierra-suave); border-top: 5px solid var(--tierra); }
+        .prohibidos { background-color: var(--alerta-bg); border-top: 5px solid var(--alerta-borde); }
+
+        /* Pasos visuales */
+        .pasos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        .paso-item {
+            background: var(--fondo);
+            padding: 1.4rem;
+            border-radius: 12px;
+            position: relative;
+        }
+        .paso-num {
+            width: 32px;
+            height: 32px;
+            background: var(--verde-bosque);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Acordeón de Problemas (SOS Composta) */
+        details {
+            background: var(--fondo);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        details[open] {
+            background: #f0fdf4;
+            border-color: var(--verde-hoja);
+        }
+        summary {
+            font-weight: 600;
+            color: var(--verde-bosque);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::after {
+            content: "+";
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--verde-medio);
+        }
+        details[open] summary::after {
+            content: "−";
+        }
+        details p {
+            margin: 0.8rem 0 0;
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+        }
+
+        /* Formularios y Calculadora */
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.4rem; color: var(--verde-bosque); }
+        .form-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--verde-hoja);
+            box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.15);
+        }
+        button {
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-bosque));
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(27, 67, 50, 0.25);
+        }
+
+        /* Barra visual interactiva en calculadora */
+        .barra-composta {
+            display: flex;
+            height: 24px;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 1rem 0;
+            background: #e5e7eb;
+        }
+        .barra-verdes {
+            background: var(--verde-hoja);
+            width: 28%;
+            transition: width 0.3s;
+        }
+        .barra-marrones {
+            background: var(--tierra);
+            width: 72%;
+            transition: width 0.3s;
+        }
+
+        .resultado-box {
+            background: linear-gradient(to right, #ecfdf5, #f0fdf4);
+            border: 1px solid var(--verde-hoja);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Comunidad */
+        .alerta-exito {
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .consulta-card {
+            background: var(--fondo);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+        }
+        .consulta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .avatar-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--verde-medio);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .respuesta-admin {
+            background-color: var(--blanco);
+            padding: 1rem;
+            border-left: 4px solid var(--verde-hoja);
+            margin-top: 0.8rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
         footer {
             text-align: center;
-            padding: 1.5rem;
-            background-color: #eee;
-            color: #666;
+            padding: 2.5rem 1rem;
+            background-color: var(--verde-bosque);
+            color: rgba(255,255,255,0.8);
             font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="nav-content">
+        <a href="#" class="logo">🌱 EcoComposta</a>
+        <div class="nav-links">
+            <a href="#que-es">¿Qué es?</a>
+            <a href="#materiales">Ingredientes</a>
+            <a href="#pasos">Pasos</a>
+            <a href="#calculadora">Calculadora</a>
+            <a href="#comunidad">Dudas</a>
+        </div>
+    </div>
+</nav>
+
 <header>
-    <h1>🌱 El Arte del Compostaje</h1>
-    <p>Transforma tus residuos orgánicos en tierra fértil y reduce tu huella ecológica desde casa.</p>
+    <span class="badge-hero">♻️ Economía Circular en Casa</span>
+    <h1>Convierte tus residuos en vida</h1>
+    <p>Aprende a crear abono orgánico rico en nutrientes, reduce hasta un 50% tu basura doméstica y revitaliza tus plantas de forma natural.</p>
+    <a href="#calculadora" class="btn-hero">Probar Calculadora de Mezcla</a>
 </header>
 
 <div class="container">
+    
+    <!-- SECCIÓN 1: QUÉ ES -->
+    <section id="que-es">
+        <h2>🌍 ¿Qué es la composta y por qué importa?</h2>
+        <p>
+            La <strong>composta</strong> es el resultado de imitar el ciclo natural del bosque en casa. Mediante la acción de millones de microorganismos beneficiosos, los restos de cocina y jardín se transforman en <strong>humus</strong>: una tierra oscura, esponjosa y con aroma a tierra mojada.
+        </p>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-num">50%</span>
+                <small>Menos basura enviada a rellenos sanitarios</small>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num">2.5 : 1</span>
+                <small>Proporción ideal entre secos y húmedos</small>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num">90 días</span>
+                <small>Tiempo promedio para cosechar abono</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: MATERIALES -->
+    <section id="materiales">
+        <h2>⚖️ La Regla del Equilibrio</h2>
+        <p>El secreto de una composta sin malos olores está en balancear el <strong>Nitrógeno</strong> (materiales húmedos) con el <strong>Carbono</strong> (materiales secos).</p>
+        
+        <div class="grid-materiales">
+            <div class="card verdes">
+                <h3>🌿 Verdes (Nitrógeno)</h3>
+                <p><small>Aportan humedad y proteína a los microorganismos.</small></p>
+                <ul>
+                    {% for item in materiales_verdes %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card marrones">
+                <h3>🍂 Marrones (Carbono)</h3>
+                <p><small>Dan estructura, aireación y evitan olores.</small></p>
+                <ul>
+                    {% for item in materiales_marrones %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card prohibidos">
+                <h3>🚫 Nunca añadir</h3>
+                <p><small>Atraen plagas o contaminan el abono final.</small></p>
+                <ul>
+                    {% for item in no_compostar %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: PASOS Y DIAGNÓSTICO -->
+    <section id="pasos">
+        <h2>🛠️ Cómo empezar en 4 pasos</h2>
+        <div class="pasos-grid">
+            <div class="paso-item">
+                <div class="paso-num">1</div>
+                <strong>Prepara la base</strong>
+                <p><small>Coloca una cama de 10 cm de ramas secas en el fondo para permitir el drenaje y paso de aire.</small></p>
+            </div>
+            <div class="paso-item">
+                <div class="paso-num">2</div>
+                <strong>Arma las capas</strong>
+                <p><small>Alterna 1 parte de restos verdes por cada 2.5 partes de material marrón troceado.</small></p>
+            </div>
+            <div class="paso-item">
+                <div class="paso-num">3</div>
+                <strong>Oxigena</strong>
+                <p><small>Voltea la mezcla una vez por semana con una pala para activar las bacterias aeróbicas.</small></p>
+            </div>
+            <div class="paso-item">
+                <div class="paso-num">4</div>
+                <strong>Cosecha</strong>
+                <p><small>Cuando ya no reconozcas los restos y huela a bosque húmedo, ¡tu tierra está lista!</small></p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; color: var(--verde-bosque);">🩺 SOS Composta: Diagnóstico rápido</h3>
+        <details>
+            <summary>👃 Huele a huevo podrido o amoníaco</summary>
+            <p><strong>Causa:</strong> Exceso de humedad o demasiados materiales verdes (falta oxígeno). <br><strong>Solución:</strong> Añade abundante cartón troceado o hojas secas y remueve bien la mezcla para airearla.</p>
+        </details>
+        <details>
+            <summary>🪰 Hay muchas mosquitas de la fruta</summary>
+            <p><strong>Causa:</strong> Los restos de comida quedaron expuestos en la superficie. <br><strong>Solución:</strong> Siempre termina cada aporte cubriendo los restos frescos con una capa de 5 cm de hojas secas o tierra.</p>
+        </details>
+        <details>
+            <summary>🏜️ No se descompone y está muy seca</summary>
+            <p><strong>Causa:</strong> Falta de agua o exceso de materiales marrones. <br><strong>Solución:</strong> Rocía agua poco a poco mientras mezclas hasta que tenga la humedad de una esponja exprimida.</p>
+        </details>
+    </section>
+
+    <!-- SECCIÓN 4: CALCULADORA -->
     <section id="calculadora">
         <h2>🧮 Calculadora de Proporciones</h2>
-        <p>Ingresa cuántos kilos o litros de residuos húmedos (verdes) vas a añadir hoy para calcular la mezcla exacta:</p>
-       
+        <p>Escribe cuántos kilos o litros de residuos frescos tienes hoy para visualizar la proporción de capas:</p>
+        
+        <div class="barra-composta" title="Proporción visual: 28% Verdes / 72% Marrones">
+            <div class="barra-verdes"></div>
+            <div class="barra-marrones"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--texto-suave); margin-bottom: 1.5rem;">
+            <span>🌿 1 parte Verdes (<strong id="preview-verdes">1</strong> kg/L)</span>
+            <span>🍂 2.5 partes Marrones (<strong id="preview-marrones">2.5</strong> kg/L)</span>
+        </div>
+
         <form method="POST" action="#calculadora">
             {% csrf_token %}
             <div class="form-group">
                 {{ calc_form.cantidad_verdes.label_tag }}
                 {{ calc_form.cantidad_verdes }}
             </div>
-            <button type="submit" name="btn_calcular">Calcular mezcla ideal</button>
+            <button type="submit" name="btn_calcular">Calcular receta exacta</button>
         </form>
 
         {% if resultado_calculadora %}
         <div class="resultado-box">
-            <h3>Resultado para {{ resultado_calculadora.verdes }} kg/L de verdes:</h3>
-            <ul>
-                <li>🍂 Añade <strong>{{ resultado_calculadora.marrones }} kg/L de material marrón</strong> (hojas secas, cartón o aserrín).</li>
-                <li>💧 Si la mezcla se siente muy seca al tacto, rocía aproximadamente <strong>{{ resultado_calculadora.agua_estimada }} litros de agua</strong>.</li>
+            <h3 style="margin-top: 0; color: var(--verde-bosque);">✅ Receta para {{ resultado_calculadora.verdes }} kg/L de verdes:</h3>
+            <ul style="margin-bottom: 0;">
+                <li>🍂 Mezcla con <strong>{{ resultado_calculadora.marrones }} kg/L de material marrón</strong> (hojas secas, cartón o aserrín).</li>
+                <li>💧 Si notas el ambiente seco, pulveriza unos <strong>{{ resultado_calculadora.agua_estimada }} litros de agua</strong>.</li>
             </ul>
         </div>
         {% endif %}
     </section>
 
+    <!-- SECCIÓN 5: COMUNIDAD -->
     <section id="comunidad">
-        <h2>💬 Preguntas y Comunidad</h2>
-       
+        <h2>💬 Consultorio de Compostaje</h2>
+        <p>¿Tienes dudas con tu compostero? Déjanos tu pregunta y la responderemos aquí mismo.</p>
+        
         {% if messages %}
             {% for message in messages %}
-                <div class="alerta-exito">{{ message }}</div>
+                <div class="alerta-exito">✨ {{ message }}</div>
             {% endfor %}
         {% endif %}
 
@@ -167,88 +577,60 @@
                 {{ consulta_form.pregunta.label_tag }}
                 {{ consulta_form.pregunta }}
             </div>
-            <button type="submit" name="btn_preguntar">Enviar pregunta</button>
+            <button type="submit" name="btn_preguntar">Publicar consulta</button>
         </form>
 
-        <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #eee;">
-
-        <h3>Dudas recientes</h3>
+        <h3 style="margin-top: 2.2rem; color: var(--verde-bosque);">Preguntas recientes de la comunidad</h3>
         {% for item in consultas %}
-            <div class="consulta-item">
-                <strong>{{ item.nombre }}</strong> <small style="color:#888;">({{ item.fecha_creacion|date:"d M Y" }})</small>
+            <div class="consulta-card">
+                <div class="consulta-header">
+                    <div>
+                        <span class="avatar-circle">{{ item.nombre|slice:":1"|upper }}</span>
+                        <strong>{{ item.nombre }}</strong>
+                    </div>
+                    <small style="color:#6b7280;">{{ item.fecha_creacion|date:"d M Y" }}</small>
+                </div>
                 <p style="margin: 0.4rem 0;">{{ item.pregunta }}</p>
-               
+                
                 {% if item.respuesta %}
                     <div class="respuesta-admin">
-                        <strong>🌱 Respuesta:</strong> {{ item.respuesta }}
+                        <strong>🌱 Respuesta del experto:</strong> {{ item.respuesta }}
                     </div>
                 {% else %}
-                    <small style="color: #999;"><em>Pendiente de respuesta...</em></small>
+                    <small style="color: #9ca3af;"><em>⏳ Esperando respuesta del equipo...</em></small>
                 {% endif %}
             </div>
         {% empty %}
-            <p>Aún no hay preguntas. ¡Sé el primero en consultar!</p>
+            <p style="color: var(--texto-suave);">Aún no hay preguntas registradas. ¡Anímate a escribir la primera!</p>
         {% endfor %}
     </section>
-    <section>
-        <h2>¿Qué es la composta?</h2>
-        <p>
-            La <strong>composta</strong> (o compost) es un abono orgánico natural que se obtiene mediante la descomposición controlada de materia orgánica —como restos de comida y desechos de jardín— gracias a la acción de microorganismos (bacterias, hongos) y pequeños invertebrados.
-        </p>
-        <p>
-            El resultado es el <strong>humus</strong>: una tierra oscura, esponjosa y rica en nutrientes con un agradable olor a bosque húmedo, ideal para nutrir plantas, huertos y jardines.
-        </p>
-    </section>
 
-    <section>
-        <h2>¿Qué poner y qué evitar? (La regla del equilibrio)</h2>
-        <p>Para que la composta no genere malos olores, debes equilibrar materiales húmedos ricos en <strong>Nitrógeno (Verdes)</strong> con materiales secos ricos en <strong>Carbono (Marrones)</strong>.</p>
-       
-        <div class="grid-materiales">
-            <div class="card verdes">
-                <h3>🌿 Verdes (Nitrógeno)</h3>
-                <ul>
-                    {% for item in materiales_verdes %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <div class="card marrones">
-                <h3>🍂 Marrones (Carbono)</h3>
-                <ul>
-                    {% for item in materiales_marrones %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <div class="card prohibidos">
-                <h3>🚫 Evitar</h3>
-                <ul>
-                    {% for item in no_compostar %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="pasos">
-        <h2>Cómo empezar en 4 pasos</h2>
-        <ol>
-            <li><strong>Elige un lugar o contenedor:</strong> Puede ser un rincón directo sobre la tierra o un compostador con ventilación y drenaje.</li>
-            <li><strong>Crea una base seca:</strong> Coloca una capa inicial de ramas pequeñas y hojas secas (unos 10 cm) para facilitar la aireación.</li>
-            <li><strong>Alterna capas ("Lasaña"):</strong> Añade una parte de residuos verdes (húmedos) por cada dos partes de materiales marrones (secos).</li>
-            <li><strong>Aireación y humedad:</strong> Remueve la mezcla cada 1 o 2 semanas para oxigenarla. Debe sentirse como una esponja húmeda, nunca empapada.</li>
-        </ol>
-        <p><em>Tiempo estimado: En un periodo de <strong>2 a 4 meses</strong> tendrás composta lista para usar.</em></p>
-    </section>
 </div>
 
 <footer>
-    Proyecto Informativo sobre Compostaje • Desarrollado con Django
+    <p><strong>🌱 EcoComposta</strong> • Proyecto Educativo sobre Compostaje Doméstico</p>
+    <p style="font-size: 0.8rem; opacity: 0.7;">Desarrollado con Python & Django</p>
 </footer>
+
+<!-- Script ligero para vista previa en tiempo real en la calculadora -->
+<script>
+    const inputVerdes = document.getElementById('id_cantidad_verdes');
+    const previewVerdes = document.getElementById('preview-verdes');
+    const previewMarrones = document.getElementById('preview-marrones');
+
+    if (inputVerdes) {
+        inputVerdes.addEventListener('input', function() {
+            const val = parseFloat(this.value);
+            if (!isNaN(val) && val > 0) {
+                previewVerdes.textContent = val;
+                previewMarrones.textContent = (val * 2.5).toFixed(1);
+            } else {
+                previewVerdes.textContent = '1';
+                previewMarrones.textContent = '2.5';
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
